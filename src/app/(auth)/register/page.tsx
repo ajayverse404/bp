@@ -1,16 +1,41 @@
+'use client'
+
 import { type Metadata } from 'next'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/Button'
-import { SelectField, TextField } from '@/components/Fields'
+import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/SlimLayout'
-
-export const metadata: Metadata = {
-  title: 'Sign Up',
-}
+import { signUp } from '@/lib/auth-helpers-client'
 
 export default function Register() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setError('')
+    setMessage('')
+
+    const { error: signUpError } = await signUp(email, password)
+    
+    if (signUpError) {
+      setError(signUpError)
+    } else {
+      setMessage('Please check your email for a verification link to complete your registration.')
+    }
+    
+    setIsLoading(false)
+  }
+
   return (
     <SlimLayout>
       <div className="flex">
@@ -31,56 +56,48 @@ export default function Register() {
         </Link>{' '}
         to your account.
       </p>
-      <form
-        action="#"
-        className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2"
-      >
+      
+      {message && (
+        <div className="mt-4 rounded-md bg-green-50 p-4">
+          <div className="text-sm text-green-700">{message}</div>
+        </div>
+      )}
+      
+      {error && (
+        <div className="mt-4 rounded-md bg-red-50 p-4">
+          <div className="text-sm text-red-700">{error}</div>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-y-8">
         <TextField
-          label="First name"
-          name="first_name"
-          type="text"
-          autoComplete="given-name"
-          required
-        />
-        <TextField
-          label="Last name"
-          name="last_name"
-          type="text"
-          autoComplete="family-name"
-          required
-        />
-        <TextField
-          className="col-span-full"
           label="Email address"
           name="email"
           type="email"
           autoComplete="email"
           required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
-          className="col-span-full"
           label="Password"
           name="password"
           type="password"
           autoComplete="new-password"
           required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <SelectField
-          className="col-span-full"
-          label="How did you hear about us?"
-          name="referral_source"
-        >
-          <option>Social media</option>
-          <option>Friend or family referral</option>
-          <option>School event</option>
-          <option>Online search</option>
-          <option>Community event</option>
-          <option>Other</option>
-        </SelectField>
-        <div className="col-span-full">
-          <Button type="submit" variant="solid" color="blue" className="w-full">
+        <div>
+          <Button 
+            type="submit" 
+            variant="solid" 
+            color="blue" 
+            className="w-full"
+            disabled={isLoading}
+          >
             <span>
-              Sign up <span aria-hidden="true">&rarr;</span>
+              {isLoading ? 'Signing up...' : 'Sign up'} <span aria-hidden="true">&rarr;</span>
             </span>
           </Button>
         </div>
