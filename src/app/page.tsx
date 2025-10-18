@@ -1,5 +1,5 @@
-import { CallToAction } from '@/components/CallToAction'
 import { Faqs } from '@/components/Faqs'
+import { FirstCohortPricing } from '@/components/FirstCohortPricing'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
@@ -14,11 +14,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <PrimaryFeatures />
-        <SecondaryFeatures />
-        <CallToAction />
+        {/* <PrimaryFeatures /> */}
+        {/* <SecondaryFeatures /> */}
+        <FirstCohortPricing />
         <Testimonials />
-        <Pricing />
+        {/* <Pricing /> */}
         <Faqs />
       </main>
       <Footer />

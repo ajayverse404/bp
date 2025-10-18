@@ -19,7 +19,7 @@ export default function Register() {
         </Link>
       </div>
       <h2 className="mt-20 text-lg font-semibold text-gray-900">
-        Get started for free
+        Enroll in Binary Prototypes
       </h2>
       <p className="mt-2 text-sm text-gray-700">
         Already registered?{' '}
@@ -70,10 +70,12 @@ export default function Register() {
           label="How did you hear about us?"
           name="referral_source"
         >
-          <option>AltaVista search</option>
-          <option>Super Bowl commercial</option>
-          <option>Our route 34 city bus ad</option>
-          <option>The “Never Use This” podcast</option>
+          <option>Social media</option>
+          <option>Friend or family referral</option>
+          <option>School event</option>
+          <option>Online search</option>
+          <option>Community event</option>
+          <option>Other</option>
         </SelectField>
         <div className="col-span-full">
           <Button type="submit" variant="solid" color="blue" className="w-full">

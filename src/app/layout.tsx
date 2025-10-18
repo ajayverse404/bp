@@ -6,11 +6,11 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - TaxPal',
-    default: 'TaxPal - Accounting made simple for small businesses',
+    template: '%s - Binary Prototypes',
+    default: 'Binary Prototypes - Empowering Young Innovators Through Robotics',
   },
   description:
-    'Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.',
+    'Binary Prototypes (Try Catch Robotics) makes STEM education accessible and engaging for middle school students through hands-on robotics training. Building tomorrow\'s innovators today.',
 }
 
 const inter = Inter({

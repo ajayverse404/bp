@@ -11,19 +11,19 @@ const testimonials = [
   [
     {
       content:
-        'TaxPal is so easy to use I can’t help but wonder if it’s really doing the things the government expects me to do.',
+        'My daughter has grown so much in confidence since joining Binary Prototypes. She went from being intimidated by technology to building her own robots!',
       author: {
-        name: 'Sheryl Berge',
-        role: 'CEO at Lynch LLC',
+        name: 'Sarah Martinez',
+        role: 'Parent',
         image: avatarImage1,
       },
     },
     {
       content:
-        'I’m trying to get a hold of someone in support, I’m in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.',
+        'The instructors are patient, knowledgeable, and truly care about each student\'s progress. My son looks forward to every class.',
       author: {
-        name: 'Amy Hahn',
-        role: 'Director at Velocity Industries',
+        name: 'David Chen',
+        role: 'Parent',
         image: avatarImage4,
       },
     },
@@ -31,19 +31,19 @@ const testimonials = [
   [
     {
       content:
-        'The best part about TaxPal is every time I pay my employees, my bank balance doesn’t go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.',
+        'Binary Prototypes taught me that I can create anything I imagine. Now I want to study engineering in college!',
       author: {
-        name: 'Leland Kiehn',
-        role: 'Founder of Kiehn and Sons',
+        name: 'Emily Johnson',
+        role: 'Student, Age 13',
         image: avatarImage5,
       },
     },
     {
       content:
-        'There are so many things I had to do with my old software that I just don’t do at all with TaxPal. Suspicious but I can’t say I don’t love it.',
+        'I love working on team projects here. We learn to code, build robots, and solve problems together. It\'s the best part of my week!',
       author: {
-        name: 'Erin Powlowski',
-        role: 'COO at Armstrong Inc',
+        name: 'Marcus Williams',
+        role: 'Student, Age 12',
         image: avatarImage2,
       },
     },
@@ -51,19 +51,19 @@ const testimonials = [
   [
     {
       content:
-        'I used to have to remit tax to the EU and with TaxPal I somehow don’t have to do that anymore. Nervous to travel there now though.',
+        'The hands-on approach makes complex concepts easy to understand. My daughter is now helping her classmates with tech projects at school.',
       author: {
-        name: 'Peter Renolds',
-        role: 'Founder of West Inc',
+        name: 'Jennifer Lee',
+        role: 'Parent',
         image: avatarImage3,
       },
     },
     {
       content:
-        'This is the fourth email I’ve sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.',
+        'This program has been transformative. Our son has developed critical thinking skills that extend far beyond robotics.',
       author: {
-        name: 'Amy Hahn',
-        role: 'Director at Velocity Industries',
+        name: 'Michael Thompson',
+        role: 'Parent',
         image: avatarImage4,
       },
     },
@@ -82,18 +82,18 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      aria-label="What our customers are saying"
+      aria-label="What our students and parents are saying"
       className="bg-slate-50 py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
           <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-            Loved by businesses worldwide.
+            Trusted by families in our community.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Our software is so simple that people can’t help but fall in love
-            with it. Simplicity is easy when you just skip tons of
-            mission-critical features.
+            Hear from students and parents about their experience with Binary
+            Prototypes and how robotics education has transformed their learning
+            journey.
           </p>
         </div>
         <ul

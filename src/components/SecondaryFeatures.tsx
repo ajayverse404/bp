@@ -20,12 +20,12 @@ interface Feature {
 
 const features: Array<Feature> = [
   {
-    name: 'Reporting',
-    summary: 'Stay on top of things with always up-to-date reporting features.',
+    name: 'Mission-Driven',
+    summary: 'Preparing students for a tech-driven future.',
     description:
-      'We talked about reporting in the section above but we needed three items here, so mentioning it one more time for posterity.',
+      'Through hands-on robotics education and STEM excellence, we equip middle schoolers with the skills they need to thrive in tomorrow\'s world.',
     image: screenshotProfitLoss,
-    icon: function ReportingIcon() {
+    icon: function MissionIcon() {
       let id = useId()
       return (
         <>
@@ -54,13 +54,13 @@ const features: Array<Feature> = [
     },
   },
   {
-    name: 'Inventory',
+    name: 'Collaborative Learning',
     summary:
-      'Never lose track of what’s in stock with accurate inventory tracking.',
+      'Building teamwork and communication skills.',
     description:
-      'We don’t offer this as part of our software but that statement is inarguably true. Accurate inventory tracking would help you for sure.',
+      'Group projects and peer programming foster collaboration, helping students learn from each other while developing essential soft skills.',
     image: screenshotInventory,
-    icon: function InventoryIcon() {
+    icon: function CollaborativeIcon() {
       return (
         <>
           <path
@@ -82,13 +82,13 @@ const features: Array<Feature> = [
     },
   },
   {
-    name: 'Contacts',
+    name: 'Excellence & Innovation',
     summary:
-      'Organize all of your contacts, service providers, and invoices in one place.',
+      'High standards meet creative problem-solving.',
     description:
-      'This also isn’t actually a feature, it’s just some friendly advice. We definitely recommend that you do this, you’ll feel really organized and professional.',
+      'We maintain excellence while making learning fun and accessible. Every challenge encourages out-of-the-box thinking and innovation.',
     image: screenshotContacts,
-    icon: function ContactsIcon() {
+    icon: function ExcellenceIcon() {
       return (
         <>
           <path
@@ -228,17 +228,16 @@ export function SecondaryFeatures() {
   return (
     <section
       id="secondary-features"
-      aria-label="Features for simplifying everyday business tasks"
+      aria-label="Our Core Values"
       className="pt-20 pb-14 sm:pt-32 sm:pb-20 lg:pb-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
           <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-            Simplify everyday business tasks.
+            Our Core Values
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Because you’d probably be a little confused if we suggested you
-            complicate your everyday business tasks instead.
+            The principles that guide everything we do at Binary Prototypes.
           </p>
         </div>
         <FeaturesMobile />

@@ -14,27 +14,27 @@ import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
 
 const features = [
   {
-    title: 'Payroll',
+    title: 'Programming Fundamentals',
     description:
-      "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.",
+      'Build a strong foundation in coding concepts through hands-on projects. Students learn to think logically and solve problems systematically.',
     image: screenshotPayroll,
   },
   {
-    title: 'Claim expenses',
+    title: 'Engineering Principles',
     description:
-      "All of your receipts organized into one place, as long as you don't mind typing in the data by hand.",
+      'Understand design and mechanical systems by building real robots. Learn how things work and how to make them work better.',
     image: screenshotExpenses,
   },
   {
-    title: 'VAT handling',
+    title: 'Critical Thinking Skills',
     description:
-      "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.",
+      'Develop problem-solving abilities through creative challenges. Learn to analyze problems, design solutions, and iterate on your ideas.',
     image: screenshotVatReturns,
   },
   {
-    title: 'Reporting',
+    title: 'Real-World Applications',
     description:
-      'Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.',
+      'Create robots that address practical challenges. Apply your skills to solve real problems and see the impact of your innovations.',
     image: screenshotReporting,
   },
 ]
@@ -62,7 +62,7 @@ export function PrimaryFeatures() {
   return (
     <section
       id="features"
-      aria-label="Features for running your books"
+      aria-label="Our Educational Approach"
       className="relative overflow-hidden bg-blue-600 pt-20 pb-28 sm:py-32"
     >
       <Image
@@ -76,11 +76,12 @@ export function PrimaryFeatures() {
       <Container className="relative">
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
-            Everything you need to run your books.
+            Our Comprehensive Curriculum
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
-            Well everything you need if you aren’t that picky about minor
-            details like tax compliance.
+            Students engage in hands-on projects where they build and program
+            robots to solve real-world challenges, fostering both technical
+            skills and creative thinking.
           </p>
         </div>
         <TabGroup

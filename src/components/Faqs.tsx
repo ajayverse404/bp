@@ -6,53 +6,53 @@ import backgroundImage from '@/images/background-faqs.jpg'
 const faqs = [
   [
     {
-      question: 'Does TaxPal handle VAT?',
+      question: 'What age group is Binary Prototypes designed for?',
       answer:
-        'Well no, but if you move your company offshore you can probably ignore it.',
+        'Our programs are specifically designed for middle school students (ages 11-14), with curriculum tailored to their developmental stage and learning needs.',
     },
     {
-      question: 'Can I pay for my subscription via purchase order?',
-      answer: 'Absolutely, we are happy to take your money in all forms.',
+      question: 'Does my child need prior experience?',
+      answer:
+        'Not at all! We welcome students of all skill levels. Our Beginner program starts with fundamentals, while Advanced programs challenge experienced students.',
     },
     {
-      question: 'How do I apply for a job at TaxPal?',
+      question: 'What will my child learn?',
       answer:
-        'We only hire our customers, so subscribe for a minimum of 6 months and then let’s talk.',
+        'Students learn programming fundamentals, engineering principles, critical thinking, and problem-solving through hands-on robotics projects. They also develop teamwork and communication skills.',
     },
   ],
   [
     {
-      question: 'What was that testimonial about tax fraud all about?',
+      question: 'How are classes structured?',
       answer:
-        'TaxPal is just a software application, ultimately your books are your responsibility.',
+        'Classes are hands-on and project-based, with small group instruction to ensure personalized attention. Students work on building and programming robots to solve real-world challenges.',
     },
     {
-      question:
-        'TaxPal sounds horrible but why do I still feel compelled to purchase?',
+      question: 'What robotics platforms do you use?',
       answer:
-        'This is the power of excellent visual design. You just can’t resist it, no matter how poorly it actually functions.',
+        'We use industry-standard robotics platforms and programming tools that prepare students for competitions and future STEM education.',
     },
     {
-      question:
-        'I found other companies called TaxPal, are you sure you can use this name?',
+      question: 'Do you offer competition opportunities?',
       answer:
-        'Honestly not sure at all. We haven’t actually incorporated or anything, we just thought it sounded cool and made this website.',
+        'Yes! Our Intermediate and Advanced programs include competition preparation, and we support teams participating in robotics competitions.',
     },
   ],
   [
     {
-      question: 'How do you generate reports?',
+      question: 'How do I enroll my child?',
       answer:
-        'You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons.',
+        'Click the "Enroll Now" button to get started, or contact us directly for enrollment information and to schedule a tour of our facility.',
     },
     {
-      question: 'Can we expect more inventory features?',
-      answer: 'In life it’s really better to never expect anything at all.',
+      question: 'What is the class schedule?',
+      answer:
+        'We offer flexible scheduling with weekly sessions. Contact us to learn about current class times and availability for your preferred program level.',
     },
     {
-      question: 'I lost my password, how do I get into my account?',
+      question: 'What is your instructor-to-student ratio?',
       answer:
-        'Send us an email and we will send you a copy of our latest password spreadsheet so you can find your information.',
+        'We maintain small class sizes with certified instructors to ensure each student receives personalized guidance and support throughout their learning journey.',
     },
   ],
 ]
@@ -81,8 +81,8 @@ export function Faqs() {
             Frequently asked questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            If you can’t find what you’re looking for, email our support team
-            and if you’re lucky someone will get back to you.
+            Have questions about our programs? Here are answers to some common
+            questions. Feel free to contact us for more information.
           </p>
         </div>
         <ul

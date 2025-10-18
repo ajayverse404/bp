@@ -22,14 +22,14 @@ export default function Login() {
         Sign in to your account
       </h2>
       <p className="mt-2 text-sm text-gray-700">
-        Don’t have an account?{' '}
+        Don't have an account?{' '}
         <Link
           href="/register"
           className="font-medium text-blue-600 hover:underline"
         >
-          Sign up
+          Enroll now
         </Link>{' '}
-        for a free trial.
+        to get started.
       </p>
       <form action="#" className="mt-10 grid grid-cols-1 gap-y-8">
         <TextField
