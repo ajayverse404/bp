@@ -1,5 +1,6 @@
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import Link from 'next/link'
 
 export function Hero() {
   return (
@@ -27,12 +28,15 @@ export function Hero() {
 
         {/* Call to action buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-          <button 
-            disabled
-            className="bg-slate-400 text-white px-8 py-3 rounded-lg font-semibold cursor-not-allowed"
-          >
-            Start Your Journey (Coming Soon) →
-          </button>
+          <Link href="/login">
+            <Button 
+              variant="solid"
+              color="blue"
+              className="px-8 py-3 text-lg font-semibold"
+            >
+              Start Your Journey
+            </Button>
+          </Link>
         </div>
 
         {/* Statistics */}
