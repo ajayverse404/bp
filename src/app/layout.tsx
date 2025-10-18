@@ -39,7 +39,9 @@ export default function RootLayout({
         lexend.variable,
       )}
     >
-      <body className="flex h-full flex-col">{children}</body>
+      <body className="flex h-full flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   )
 }
