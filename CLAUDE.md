@@ -68,3 +68,22 @@ All components are in `/src/components` with flat structure:
 ## Assets
 - Images in `src/images/` with subdirectories: `screenshots/`, `avatars/`, `logos/`
 - Background images for sections (features, auth, call-to-action, faqs)
+
+## Analytics
+
+### Google Analytics 4 Integration
+- **Setup**: Set `NEXT_PUBLIC_GA_ID` environment variable with GA4 Measurement ID
+- **Components**:
+  - `GoogleAnalytics` component in root layout for initialization
+  - `useAnalytics` hook for event tracking
+- **Utilities**: `src/lib/gtag.ts` for GA utility functions
+- **Best Practices**:
+  - Analytics disabled when `NEXT_PUBLIC_GA_ID` is not set (dev default)
+  - Automatic page view tracking on navigation
+  - Type-safe event tracking with custom hook
+- **Documentation**: See `docs/ANALYTICS.md` for full setup guide
+
+### Environment Variables
+- `NEXT_PUBLIC_GA_ID`: Google Analytics Measurement ID (format: G-XXXXXXXXXX)
+- Copy `.env.local.example` to `.env.local` for local development
+- Never commit `.env.local` - it's gitignored

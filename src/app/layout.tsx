@@ -2,6 +2,7 @@ import { type Metadata } from 'next'
 import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
 
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default function RootLayout({
       )}
     >
       <body className="flex h-full flex-col" suppressHydrationWarning>
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
