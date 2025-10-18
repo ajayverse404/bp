@@ -3,53 +3,58 @@ import { Container } from '@/components/Container'
 
 export function Hero() {
   return (
-    <Container className="pt-20 pb-16 text-center lg:pt-32">
-      <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-        Empowering{' '}
-        <span className="relative whitespace-nowrap text-blue-600">
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 418 42"
-            className="absolute top-2/3 left-0 h-[0.58em] w-full fill-blue-300/70"
-            preserveAspectRatio="none"
-          >
-            <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      <Container className="relative z-10 text-center text-slate-900">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-blue-100 rounded-full px-4 py-2 mb-8">
+          <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
           </svg>
-          <span className="relative">young innovators</span>
-        </span>{' '}
-        through robotics education.
-      </h1>
-      <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-        At Binary Prototypes, we believe every student has the potential to be a
-        creator, not just a consumer of technology. Join our robotics training
-        center and build tomorrow's innovations today.
-      </p>
-      <div className="mt-10 flex justify-center gap-x-6">
-        <Button href="/register">Enroll Now</Button>
-        <Button href="#features" variant="outline">
-          <span>Learn More</span>
-        </Button>
-      </div>
-      <div className="mt-36 lg:mt-44">
-        <p className="font-display text-base text-slate-900">
-          Serving Our Community Since 2020
+          <span className="text-sm font-medium text-blue-800">Robotics Training Center</span>
+        </div>
+
+        {/* Main headline */}
+        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-tight sm:text-7xl mb-6">
+          Build the Future with{' '}
+          <span className="text-yellow-500">Try Catch</span>{' '}
+          <span className="text-blue-600">Robotics</span>
+        </h1>
+
+        {/* Description */}
+        <p className="mx-auto max-w-2xl text-lg tracking-tight text-slate-600 mb-10">
+          Empowering middle school students with hands-on robotics education. Learn programming, engineering, and problem-solving through exciting robot challenges.
         </p>
-        <div className="mt-8 flex items-center justify-center gap-x-12 text-slate-900">
-          <div className="text-center">
-            <p className="font-display text-4xl font-semibold text-blue-600">
-              Expert
-            </p>
-            <p className="mt-2 text-sm">Certified Instructors</p>
+
+        {/* Call to action buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+          <Button 
+            href="/register" 
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+          >
+            Start Your Journey →
+          </Button>
+        </div>
+
+        {/* Statistics */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div className="text-center bg-blue-100 rounded-lg p-6">
+            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">5+</div>
+            <div className="text-sm text-blue-800">Students Trained</div>
           </div>
-          <div className="h-16 w-px bg-slate-300" />
-          <div className="text-center">
-            <p className="font-display text-4xl font-semibold text-blue-600">
-              Since 2020
-            </p>
-            <p className="mt-2 text-sm">Years of Excellence</p>
+          <div className="text-center bg-blue-100 rounded-lg p-6">
+            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">3+</div>
+            <div className="text-sm text-blue-800">Robot Types</div>
+          </div>
+          <div className="text-center bg-blue-100 rounded-lg p-6">
+            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">98%</div>
+            <div className="text-sm text-blue-800">Success Rate</div>
+          </div>
+          <div className="text-center bg-blue-100 rounded-lg p-6">
+            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">5★</div>
+            <div className="text-sm text-blue-800">Parent Rating</div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   )
 }
