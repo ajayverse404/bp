@@ -5,6 +5,7 @@ import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
 import { MobileNavigation } from '@/components/MobileNavigation'
 import { getUser } from '@/lib/auth-helpers'
+import { HeaderClient } from '@/components/HeaderClient'
 
 
 export async function Header() {
@@ -16,25 +17,41 @@ export async function Header() {
       <Container>
         <nav className="relative z-[101] flex justify-between">
           <div className="flex items-center md:gap-x-12">
-            <Link href="#" aria-label="Home" className="flex items-center gap-x-2 sm:gap-x-3">
-              <Logo className="h-10 w-auto" />
-              <div className="block">
-                <div className="text-xs sm:text-sm font-semibold text-slate-900">
-                  Try Catch Robotics
-                </div>
-                <div className="text-[10px] sm:text-xs text-slate-600">by Binary Prototypes</div>
-              </div>
-            </Link>
+            <HeaderClient isAuthenticated={isAuthenticated} />
             <div className="hidden md:flex md:gap-x-6">
-              <NavLink href="#first-cohort-pricing">Cohort Info</NavLink>
-              <NavLink href="#testimonials">Testimonials</NavLink>
-              <NavLink href="#faq">FAQs</NavLink>
+              <NavLink 
+                href="#first-cohort-pricing" 
+                analyticsLabel="Robotics Cohort Information"
+                analyticsLocation="header"
+              >
+                Cohort Info
+              </NavLink>
+              <NavLink 
+                href="#testimonials" 
+                analyticsLabel="Student Success Stories"
+                analyticsLocation="header"
+              >
+                Testimonials
+              </NavLink>
+              <NavLink 
+                href="#faq" 
+                analyticsLabel="Frequently Asked Questions"
+                analyticsLocation="header"
+              >
+                FAQs
+              </NavLink>
             </div>
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
             <div className="hidden md:block">
               {isAuthenticated ? (
-                <NavLink href="/dashboard">Dashboard</NavLink>
+                <NavLink 
+                  href="/dashboard" 
+                  analyticsLabel="Student Dashboard"
+                  analyticsLocation="header"
+                >
+                  Dashboard
+                </NavLink>
               ) : (
                 <span className="inline-block rounded-lg px-2 py-1 text-sm text-slate-500 cursor-not-allowed">
                   Sign in (Coming Soon)

@@ -8,16 +8,34 @@ import {
   PopoverPanel,
 } from '@headlessui/react'
 import clsx from 'clsx'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 function MobileNavLink({
   href,
   children,
+  analyticsLabel,
+  analyticsLocation = 'mobile-menu',
 }: {
   href: string
   children: React.ReactNode
+  analyticsLabel?: string
+  analyticsLocation?: string
 }) {
+  const { trackLinkClick } = useAnalytics()
+
+  const handleClick = () => {
+    const label = analyticsLabel || (typeof children === 'string' ? children : href)
+    trackLinkClick(href, `${label} - ${analyticsLocation}`)
+  }
+
   return (
-    <PopoverButton as={Link} href={href} className="block w-full p-2">
+    <PopoverButton 
+      as={Link} 
+      href={href} 
+      onClick={handleClick}
+      className="block w-full p-2 text-left hover:bg-slate-50 rounded-lg transition-colors duration-200"
+      aria-label={typeof children === 'string' ? children : undefined}
+    >
       {children}
     </PopoverButton>
   )
@@ -67,12 +85,36 @@ export function MobileNavigation({ isAuthenticated }: { isAuthenticated: boolean
         transition
         className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5 data-closed:scale-95 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in"
       >
-        <MobileNavLink href="#first-cohort-pricing">Cohort Info</MobileNavLink>
-        <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
-        <MobileNavLink href="#faq">FAQs</MobileNavLink>
+        <MobileNavLink 
+          href="#first-cohort-pricing" 
+          analyticsLabel="Robotics Cohort Information"
+          analyticsLocation="mobile-menu"
+        >
+          Cohort Info
+        </MobileNavLink>
+        <MobileNavLink 
+          href="#testimonials" 
+          analyticsLabel="Student Success Stories"
+          analyticsLocation="mobile-menu"
+        >
+          Testimonials
+        </MobileNavLink>
+        <MobileNavLink 
+          href="#faq" 
+          analyticsLabel="Frequently Asked Questions"
+          analyticsLocation="mobile-menu"
+        >
+          FAQs
+        </MobileNavLink>
         <hr className="m-2 border-slate-300/40" />
         {isAuthenticated ? (
-          <MobileNavLink href="/dashboard">Dashboard</MobileNavLink>
+          <MobileNavLink 
+            href="/dashboard" 
+            analyticsLabel="Student Dashboard"
+            analyticsLocation="mobile-menu"
+          >
+            Dashboard
+          </MobileNavLink>
         ) : (
           <div className="block w-full p-2 text-slate-500 cursor-not-allowed">
             Sign in (Coming Soon)
