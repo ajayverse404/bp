@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { getUser } from '@/lib/auth-helpers'
+import { DashboardHeader } from '@/components/DashboardHeader'
 
 export default async function DashboardLayout({
   children,
@@ -12,5 +13,12 @@ export default async function DashboardLayout({
     redirect('/login')
   }
 
-  return <>{children}</>
+  return (
+    <>
+      <DashboardHeader />
+      <main className="pt-20">
+        {children}
+      </main>
+    </>
+  )
 }

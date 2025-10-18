@@ -1,8 +1,4 @@
 import { getUser } from '@/lib/auth-helpers'
-import { Button } from '@/components/Button'
-import { Logo } from '@/components/Logo'
-import Link from 'next/link'
-import SignOutButton from './SignOutButton'
 
 export default async function Dashboard() {
   const user = await getUser()
@@ -13,23 +9,6 @@ export default async function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 justify-between">
-            <div className="flex">
-              <div className="flex flex-shrink-0 items-center">
-                <Link href="/" aria-label="Home">
-                  <Logo className="h-8 w-auto" />
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <SignOutButton />
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <div className="rounded-lg bg-white p-6 shadow">

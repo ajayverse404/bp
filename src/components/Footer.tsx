@@ -22,11 +22,16 @@ export function Footer() {
           </div>
           <nav className="mt-10 text-sm" aria-label="quick links">
             <div className="-my-1 flex justify-center gap-x-6">
-              <NavLink href="#features">Features</NavLink>
+              <NavLink href="#first-cohort-pricing">Cohort Info</NavLink>
               <NavLink href="#testimonials">Testimonials</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
+              <NavLink href="#faq">FAQs</NavLink>
             </div>
           </nav>
+          <div className="mt-6 text-center">
+            <p className="text-sm text-slate-600">
+              Contact us: <a href="mailto:binaryprototypes@gmail.com" className="text-blue-600 hover:text-blue-800 underline">binaryprototypes@gmail.com</a>
+            </p>
+          </div>
         </div>
         <div className="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between">
           <div className="flex gap-x-6">
