@@ -36,15 +36,20 @@ export async function Header() {
               {isAuthenticated ? (
                 <NavLink href="/dashboard">Dashboard</NavLink>
               ) : (
-                <NavLink href="/login">Sign in</NavLink>
+                <span className="inline-block rounded-lg px-2 py-1 text-sm text-slate-500 cursor-not-allowed">
+                  Sign in (Coming Soon)
+                </span>
               )}
             </div>
             {!isAuthenticated && (
-              <Button href="/register" color="blue">
+              <button 
+                disabled 
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-slate-400 px-4 py-2 text-sm font-medium text-white cursor-not-allowed"
+              >
                 <span>
-                  Get started <span className="hidden lg:inline">today</span>
+                  Get started <span className="hidden lg:inline">(Coming Soon)</span>
                 </span>
-              </Button>
+              </button>
             )}
             <div className="-mr-1 md:hidden">
               <MobileNavigation isAuthenticated={isAuthenticated} />

@@ -137,14 +137,17 @@ function PricingCard({
       </ul>
 
       {/* CTA Button */}
-      <Button
-        href="/register"
-        variant="solid"
-        color={featured ? 'white' : 'slate'}
-        className="mt-8 w-full"
+      <button
+        disabled
+        className={clsx(
+          'mt-8 w-full inline-flex items-center justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium cursor-not-allowed',
+          featured
+            ? 'bg-slate-400 text-white'
+            : 'bg-slate-400 text-white'
+        )}
       >
-        Get started
-      </Button>
+        Get started (Coming Soon)
+      </button>
     </div>
   )
 }

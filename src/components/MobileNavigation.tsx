@@ -74,7 +74,9 @@ export function MobileNavigation({ isAuthenticated }: { isAuthenticated: boolean
         {isAuthenticated ? (
           <MobileNavLink href="/dashboard">Dashboard</MobileNavLink>
         ) : (
-          <MobileNavLink href="/login">Sign in</MobileNavLink>
+          <div className="block w-full p-2 text-slate-500 cursor-not-allowed">
+            Sign in (Coming Soon)
+          </div>
         )}
       </PopoverPanel>
     </Popover>

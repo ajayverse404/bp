@@ -27,12 +27,12 @@ export function Hero() {
 
         {/* Call to action buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-          <Button 
-            href="/register" 
-            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+          <button 
+            disabled
+            className="bg-slate-400 text-white px-8 py-3 rounded-lg font-semibold cursor-not-allowed"
           >
-            Start Your Journey →
-          </Button>
+            Start Your Journey (Coming Soon) →
+          </button>
         </div>
 
         {/* Statistics */}
