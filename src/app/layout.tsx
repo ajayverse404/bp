@@ -3,6 +3,8 @@ import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
 
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
+import { AnalyticsDebugger } from '@/components/AnalyticsDebugger'
+import '@/lib/analytics-test'
 import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
@@ -127,6 +129,7 @@ export default function RootLayout({
       </head>
       <body className="flex h-full flex-col" suppressHydrationWarning>
         <GoogleAnalytics />
+        <AnalyticsDebugger />
         {children}
       </body>
     </html>
