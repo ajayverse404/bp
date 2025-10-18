@@ -72,9 +72,9 @@ function MobileNavigation() {
         transition
         className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5 data-closed:scale-95 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in"
       >
-        <MobileNavLink href="#features">Features</MobileNavLink>
+        <MobileNavLink href="#first-cohort-pricing">Cohort Info</MobileNavLink>
         <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
-        <MobileNavLink href="#first-cohort-pricing">Pricing</MobileNavLink>
+        <MobileNavLink href="#faq">FAQs</MobileNavLink>
         <hr className="m-2 border-slate-300/40" />
         <MobileNavLink href="/login">Sign in</MobileNavLink>
       </PopoverPanel>
@@ -84,9 +84,9 @@ function MobileNavigation() {
 
 export function Header() {
   return (
-    <header className="py-10">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-white/80 backdrop-blur-md py-10">
       <Container>
-        <nav className="relative z-50 flex justify-between">
+        <nav className="relative z-[101] flex justify-between">
           <div className="flex items-center md:gap-x-12">
             <Link href="#" aria-label="Home" className="flex items-center gap-x-2 sm:gap-x-3">
               <Logo className="h-10 w-auto" />
@@ -100,7 +100,7 @@ export function Header() {
             <div className="hidden md:flex md:gap-x-6">
               <NavLink href="#first-cohort-pricing">Cohort Info</NavLink>
               <NavLink href="#testimonials">Testimonials</NavLink>
-              <NavLink href="#first-cohort-pricing">Pricing</NavLink>
+              <NavLink href="#faq">FAQs</NavLink>
             </div>
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
