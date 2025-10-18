@@ -1,21 +1,44 @@
 export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 200 40" {...props}>
-      {/* BinaryPrototype Icon - Binary/Code representation */}
+    <svg
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-labelledby="logoTitle logoDesc"
+      {...props}
+    >
+      <title id="logoTitle">Try Catch Robotics Logo</title>
+      <desc id="logoDesc">
+        Logo for Try Catch Robotics - A robotics education center teaching
+        middle school students programming, engineering, and problem-solving
+        through hands-on robotics training
+      </desc>
+
+      {/* Main circle */}
       <circle cx="20" cy="20" r="18" fill="#2563EB" />
-      <rect x="12" y="12" width="4" height="4" fill="white" />
-      <rect x="18" y="12" width="4" height="4" fill="white" />
-      <rect x="24" y="12" width="4" height="4" fill="white" />
-      <rect x="12" y="18" width="4" height="4" fill="white" />
-      <rect x="24" y="18" width="4" height="4" fill="white" />
-      <rect x="12" y="24" width="4" height="4" fill="white" />
-      <rect x="18" y="24" width="4" height="4" fill="white" />
-      <rect x="24" y="24" width="4" height="4" fill="white" />
-      
-      {/* BinaryPrototypes Text */}
-      <text x="50" y="28" fontSize="20" fontWeight="600" fill="#0F172A" fontFamily="system-ui, -apple-system, sans-serif">
-        BinaryPrototypes
-      </text>
+
+      {/* Code brackets - Try Catch concept */}
+      <path
+        d="M 12 14 L 10 14 L 10 26 L 12 26"
+        stroke="#DBEAFE"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <path
+        d="M 28 14 L 30 14 L 30 26 L 28 26"
+        stroke="#DBEAFE"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+
+      {/* Binary dots - 0 and 1 */}
+      <circle cx="16" cy="20" r="2" fill="#DBEAFE" />
+      <rect x="23" y="17" width="2" height="6" rx="1" fill="#DBEAFE" />
     </svg>
   )
 }
