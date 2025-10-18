@@ -20,6 +20,11 @@ const faqs = [
       answer:
         'Students learn programming fundamentals, engineering principles, critical thinking, and problem-solving through hands-on robotics projects. They also develop teamwork and communication skills.',
     },
+    {
+      question: 'Where are classes held?',
+      answer:
+        'Classes will be released soon. Right now, we are focusing on the US East region in the NJ or NY area for in-person events.',
+    },
   ],
   [
     {
@@ -37,6 +42,16 @@ const faqs = [
       answer:
         'Yes! Our Intermediate and Advanced programs include competition preparation, and we support teams participating in robotics competitions.',
     },
+    {
+      question: 'What are the class prerequisites?',
+      answer:
+        'It is good to have basic fundamentals of coding, but if not, we can help refresh these concepts prior to the robotics class.',
+    },
+    {
+      question: 'Does my student need a laptop?',
+      answer:
+        'Yes, for trial users we can provide a laptop. However, for actual classes, a Windows, Mac, or Linux laptop is recommended.',
+    },
   ],
   [
     {
@@ -53,6 +68,11 @@ const faqs = [
       question: 'What is your instructor-to-student ratio?',
       answer:
         'We maintain small class sizes with certified instructors to ensure each student receives personalized guidance and support throughout their learning journey.',
+    },
+    {
+      question: 'Can my student use a Chromebook?',
+      answer:
+        'No, Chromebooks have challenges with our robotics platform. Please contact us for alternative options.',
     },
   ],
 ]
