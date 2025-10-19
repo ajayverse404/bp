@@ -26,13 +26,13 @@ export async function Header() {
               >
                 Cohort Info
               </NavLink>
-              <NavLink 
+              {/* <NavLink 
                 href="#testimonials" 
                 analyticsLabel="Student Success Stories"
                 analyticsLocation="header"
               >
                 Testimonials
-              </NavLink>
+              </NavLink> */}
               <NavLink 
                 href="#faq" 
                 analyticsLabel="Frequently Asked Questions"
