@@ -9,14 +9,12 @@ import { Button } from '@/components/Button'
 import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/SlimLayout'
-import { signIn, signInWithMagicLink, signInWithGoogle } from '@/lib/auth-helpers-client'
+import { signUp, signInWithGoogle } from '@/lib/auth-helpers-client'
 
-type AuthMethod = 'password' | 'magic-link'
-
-function LoginForm() {
+function SignupForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [authMethod, setAuthMethod] = useState<AuthMethod>('password')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
@@ -31,35 +29,36 @@ function LoginForm() {
     }
   }, [searchParams])
 
-  const handlePasswordSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
     setMessage('')
 
-    const { error: signInError } = await signIn(email, password)
-    
-    if (signInError) {
-      setError(signInError)
-    } else {
-      router.push('/dashboard')
+    // Validate passwords match
+    if (password !== confirmPassword) {
+      setError('Passwords do not match')
+      setIsLoading(false)
+      return
     }
-    
-    setIsLoading(false)
-  }
 
-  const handleMagicLinkSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError('')
-    setMessage('')
+    // Validate password strength
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long')
+      setIsLoading(false)
+      return
+    }
 
-    const { error: magicLinkError } = await signInWithMagicLink(email)
+    const { error: signUpError } = await signUp(email, password)
     
-    if (magicLinkError) {
-      setError(magicLinkError)
+    if (signUpError) {
+      setError(signUpError)
     } else {
-      setMessage('Check your email for a magic link to sign in.')
+      setMessage('Account created successfully! Please check your email to verify your account.')
+      // Clear form
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
     }
     
     setIsLoading(false)
@@ -93,17 +92,17 @@ function LoginForm() {
         </Link>
       </div>
       <h2 className="mt-16 text-lg font-semibold text-gray-900">
-        Sign in to your account
+        Create your account
       </h2>
       <p className="mt-2 text-sm text-gray-700">
-        Don't have an account?{' '}
+        Already have an account?{' '}
         <Link
-          href="/signup"
+          href="/login"
           className="font-medium text-blue-600 hover:underline"
         >
-          Enroll now
+          Sign in
         </Link>{' '}
-        to get started.
+        to your account.
       </p>
       
       {message && (
@@ -118,106 +117,48 @@ function LoginForm() {
         </div>
       )}
 
-      {/* Auth Method Toggle */}
-      <div className="mt-6">
-        <div className="flex rounded-lg bg-gray-100 p-1">
-          <button
-            type="button"
-            onClick={() => setAuthMethod('password')}
-            className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-              authMethod === 'password'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
+      <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-y-8">
+        <TextField
+          label="Email address"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          label="Password"
+          name="password"
+          type="password"
+          autoComplete="new-password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <TextField
+          label="Confirm password"
+          name="confirmPassword"
+          type="password"
+          autoComplete="new-password"
+          required
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <div>
+          <Button 
+            type="submit" 
+            variant="solid" 
+            color="blue" 
+            className="w-full"
+            disabled={isLoading}
           >
-            Password
-          </button>
-          <button
-            type="button"
-            onClick={() => setAuthMethod('magic-link')}
-            className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-              authMethod === 'magic-link'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Magic Link
-          </button>
+            <span>
+              {isLoading ? 'Creating account...' : 'Create account'} <span aria-hidden="true">&rarr;</span>
+            </span>
+          </Button>
         </div>
-      </div>
-
-      {/* Password Form */}
-      {authMethod === 'password' && (
-        <form onSubmit={handlePasswordSubmit} className="mt-10 grid grid-cols-1 gap-y-8">
-          <TextField
-            label="Email address"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            label="Password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div className="flex justify-end">
-            <Link
-              href="/forgot-password"
-              className="text-sm font-medium text-blue-600 hover:underline"
-            >
-              Forgot your password?
-            </Link>
-          </div>
-          <div>
-            <Button 
-              type="submit" 
-              variant="solid" 
-              color="blue" 
-              className="w-full"
-              disabled={isLoading}
-            >
-              <span>
-                {isLoading ? 'Signing in...' : 'Sign in'} <span aria-hidden="true">&rarr;</span>
-              </span>
-            </Button>
-          </div>
-        </form>
-      )}
-
-      {/* Magic Link Form */}
-      {authMethod === 'magic-link' && (
-        <form onSubmit={handleMagicLinkSubmit} className="mt-10 grid grid-cols-1 gap-y-8">
-          <TextField
-            label="Email address"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <div>
-            <Button 
-              type="submit" 
-              variant="solid" 
-              color="blue" 
-              className="w-full"
-              disabled={isLoading}
-            >
-              <span>
-                {isLoading ? 'Sending magic link...' : 'Send magic link'} <span aria-hidden="true">&rarr;</span>
-              </span>
-            </Button>
-          </div>
-        </form>
-      )}
+      </form>
 
       {/* Divider */}
       <div className="mt-8">
@@ -257,14 +198,14 @@ function LoginForm() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             />
           </svg>
-          <span>{isLoading ? 'Signing in...' : 'Continue with Google'}</span>
+          <span>{isLoading ? 'Signing up...' : 'Continue with Google'}</span>
         </button>
       </div>
     </SlimLayout>
   )
 }
 
-export default function Login() {
+export default function Signup() {
   return (
     <Suspense fallback={
       <SlimLayout>
@@ -283,11 +224,11 @@ export default function Login() {
           Loading...
         </h2>
         <p className="mt-2 text-sm text-gray-700">
-          Please wait while we load the sign-in page.
+          Please wait while we load the signup page.
         </p>
       </SlimLayout>
     }>
-      <LoginForm />
+      <SignupForm />
     </Suspense>
   )
 }
