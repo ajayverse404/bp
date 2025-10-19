@@ -10,10 +10,10 @@
     Favicon for Try Catch Robotics - A robotics education center
   </desc>
 
-  {/* Main circle */}
+  <!-- Main circle -->
   <circle cx="20" cy="20" r="18" fill="#2563EB" />
 
-  {/* Code brackets - Try Catch concept */}
+  <!-- Code brackets - Try Catch concept -->
   <path
     d="M 12 14 L 10 14 L 10 26 L 12 26"
     stroke="#DBEAFE"
@@ -31,7 +31,7 @@
     fill="none"
   />
 
-  {/* Binary dots - 0 and 1 */}
+  <!-- Binary dots - 0 and 1 -->
   <circle cx="16" cy="20" r="2" fill="#DBEAFE" />
   <rect x="23" y="17" width="2" height="6" rx="1" fill="#DBEAFE" />
 </svg>

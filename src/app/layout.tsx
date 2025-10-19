@@ -47,12 +47,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: 'any' }
+      { url: '/favicon.ico', sizes: '16x16 32x32' },
+      { url: '/icon.svg', type: 'image/svg+xml' }
     ],
     apple: [
       { url: '/apple-icon.svg', type: 'image/svg+xml' }
     ],
+    shortcut: '/favicon.ico',
   },
   openGraph: {
     type: 'website',
