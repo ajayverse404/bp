@@ -92,13 +92,13 @@ export function MobileNavigation({ isAuthenticated }: { isAuthenticated: boolean
         >
           Cohort Info
         </MobileNavLink>
-        <MobileNavLink 
+        {/* <MobileNavLink 
           href="#testimonials" 
           analyticsLabel="Student Success Stories"
           analyticsLocation="mobile-menu"
         >
           Testimonials
-        </MobileNavLink>
+        </MobileNavLink> */}
         <MobileNavLink 
           href="#faq" 
           analyticsLabel="Frequently Asked Questions"
@@ -116,9 +116,13 @@ export function MobileNavigation({ isAuthenticated }: { isAuthenticated: boolean
             Dashboard
           </MobileNavLink>
         ) : (
-          <div className="block w-full p-2 text-slate-500 cursor-not-allowed">
-            Sign in (Coming Soon)
-          </div>
+          <MobileNavLink 
+            href="/login" 
+            analyticsLabel="Sign In"
+            analyticsLocation="mobile-menu"
+          >
+            Sign in
+          </MobileNavLink>
         )}
       </PopoverPanel>
     </Popover>

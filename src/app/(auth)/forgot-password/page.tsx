@@ -1,23 +1,19 @@
 'use client'
 
-import { type Metadata } from 'next'
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/Button'
 import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/SlimLayout'
-import { signUp } from '@/lib/auth-helpers-client'
+import { resetPassword } from '@/lib/auth-helpers-client'
 
-export default function Register() {
+export default function ForgotPassword() {
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,12 +21,12 @@ export default function Register() {
     setError('')
     setMessage('')
 
-    const { error: signUpError } = await signUp(email, password)
+    const { error: resetError } = await resetPassword(email)
     
-    if (signUpError) {
-      setError(signUpError)
+    if (resetError) {
+      setError(resetError)
     } else {
-      setMessage('Please check your email for a verification link to complete your registration.')
+      setMessage('Check your email for a password reset link. The link will expire in 1 hour.')
     }
     
     setIsLoading(false)
@@ -44,17 +40,10 @@ export default function Register() {
         </Link>
       </div>
       <h2 className="mt-20 text-lg font-semibold text-gray-900">
-        Enroll in Binary Prototypes
+        Reset your password
       </h2>
       <p className="mt-2 text-sm text-gray-700">
-        Already registered?{' '}
-        <Link
-          href="/login"
-          className="font-medium text-blue-600 hover:underline"
-        >
-          Sign in
-        </Link>{' '}
-        to your account.
+        Enter your email address and we'll send you a link to reset your password.
       </p>
       
       {message && (
@@ -79,15 +68,6 @@ export default function Register() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <TextField
-          label="Password"
-          name="password"
-          type="password"
-          autoComplete="new-password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
         <div>
           <Button 
             type="submit" 
@@ -97,11 +77,20 @@ export default function Register() {
             disabled={isLoading}
           >
             <span>
-              {isLoading ? 'Signing up...' : 'Sign up'} <span aria-hidden="true">&rarr;</span>
+              {isLoading ? 'Sending reset link...' : 'Send reset link'} <span aria-hidden="true">&rarr;</span>
             </span>
           </Button>
         </div>
       </form>
+
+      <div className="mt-6 text-center">
+        <Link
+          href="/login"
+          className="text-sm font-medium text-blue-600 hover:underline"
+        >
+          Back to sign in
+        </Link>
+      </div>
     </SlimLayout>
   )
 }
