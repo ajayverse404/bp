@@ -70,7 +70,7 @@ export function SignupConfirmation() {
               </h3>
               <div className="mt-2 text-sm text-blue-700">
                 <p>
-                  Our team will review your application and get back to you within 1-2 business days. 
+                  Our team will review your application and get back to you within 1-7 business days. 
                   In the meantime, feel free to explore our platform and reach out if you have any questions.
                 </p>
               </div>

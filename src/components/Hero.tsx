@@ -1,10 +1,33 @@
+'use client'
+
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import { getCurrentUser } from '@/lib/auth-helpers-client'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export function Hero() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { user } = await getCurrentUser()
+      setIsAuthenticated(!!user)
+    }
+    checkAuth()
+  }, [])
+
+  const handleGetStarted = () => {
+    if (isAuthenticated) {
+      router.push('/dashboard')
+    } else {
+      router.push('/login')
+    }
+  }
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <div className="relative py-20 flex items-center justify-center overflow-hidden bg-white">
       <Container className="relative z-10 text-center text-slate-900">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-blue-100 rounded-full px-4 py-2 mb-8">
@@ -27,37 +50,18 @@ export function Hero() {
         </p>
 
         {/* Call to action buttons */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-          <Link href="/login">
-            <Button 
-              variant="solid"
-              color="blue"
-              className="px-8 py-3 text-lg font-semibold"
-            >
-              Start Your Journey
-            </Button>
-          </Link>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Button 
+            variant="solid"
+            color="blue"
+            className="px-8 py-3 text-lg font-semibold"
+            onClick={handleGetStarted}
+          >
+            {isAuthenticated === null ? 'Loading...' : isAuthenticated ? 'Go to Dashboard' : 'Start Your Journey'}
+          </Button>
         </div>
 
-        {/* Statistics */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
-          <div className="text-center bg-blue-100 rounded-lg p-6">
-            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">5+</div>
-            <div className="text-sm text-blue-800">Students Trained</div>
-          </div>
-          <div className="text-center bg-blue-100 rounded-lg p-6">
-            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">3+</div>
-            <div className="text-sm text-blue-800">Robot Types</div>
-          </div>
-          <div className="text-center bg-blue-100 rounded-lg p-6">
-            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">98%</div>
-            <div className="text-sm text-blue-800">Success Rate</div>
-          </div>
-          <div className="text-center bg-blue-100 rounded-lg p-6">
-            <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">5★</div>
-            <div className="text-sm text-blue-800">Parent Rating</div>
-          </div>
-        </div>
+
       </Container>
     </div>
   )
