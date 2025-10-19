@@ -28,7 +28,7 @@ export function CallToAction() {
             tomorrow's innovations. Join Binary Prototypes and watch them become
             creators, not just consumers of technology.
           </p>
-          <Button href="/register" color="white" className="mt-10">
+          <Button href="/login" color="white" className="mt-10">
             Enroll Now
           </Button>
         </div>

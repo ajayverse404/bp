@@ -137,17 +137,14 @@ function PricingCard({
       </ul>
 
       {/* CTA Button */}
-      <button
-        disabled
-        className={clsx(
-          'mt-8 w-full inline-flex items-center justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium cursor-not-allowed',
-          featured
-            ? 'bg-slate-400 text-white'
-            : 'bg-slate-400 text-white'
-        )}
+      <Button
+        href="/login"
+        variant="solid"
+        color={featured ? "white" : "blue"}
+        className="mt-8 w-full px-4 py-2 text-sm font-medium"
       >
-        Get started (Coming Soon)
-      </button>
+        Get started
+      </Button>
     </div>
   )
 }
@@ -182,9 +179,7 @@ export function FirstCohortPricing() {
             features={[
               'Complete robotics kit included',
               '3-day intensive course',
-              'All tutorial videos and resources',
               'Parent support materials',
-              '60% early signup discount',
             ]}
           />
           <PricingCard
@@ -193,12 +188,10 @@ export function FirstCohortPricing() {
             currentPrice="240"
             description="Full robotics education with complete kit included."
             features={[
-              'Complete robotics kit included',
+              'Complete robotics kit + Hardware included',
               '3-day intensive course',
               'All tutorial videos and resources',
               'Mentorship and guidance',
-              '60% early signup discount',
-              'Full satisfaction guarantee',
             ]}
             featured
           />

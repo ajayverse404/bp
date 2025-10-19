@@ -80,7 +80,7 @@ export function AnalyticsButton({
  * Usage example:
  *
  * <AnalyticsButton
- *   href="/register"
+ *   href="/login"
  *   color="blue"
  *   analyticsLabel="Enroll Now"
  *   analyticsLocation="Hero Section"

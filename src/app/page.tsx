@@ -17,7 +17,7 @@ export default function Home() {
         <PrimaryFeatures />
         <SecondaryFeatures />
         <FirstCohortPricing />
-        <Testimonials />
+        {/* <Testimonials /> */}
         {/* <Pricing /> */}
         <Faqs />
       </main>

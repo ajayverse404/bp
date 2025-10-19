@@ -92,7 +92,7 @@ export default function Login() {
       <p className="mt-2 text-sm text-gray-700">
         Don't have an account?{' '}
         <Link
-          href="/register"
+          href="/login"
           className="font-medium text-blue-600 hover:underline"
         >
           Enroll now

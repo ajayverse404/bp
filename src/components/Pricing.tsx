@@ -137,7 +137,7 @@ export function Pricing() {
             name="Beginner"
             price="Contact Us"
             description="Perfect for students new to robotics and programming."
-            href="/register"
+            href="/login"
             features={[
               'Introduction to robotics fundamentals',
               'Basic programming concepts',
@@ -151,7 +151,7 @@ export function Pricing() {
             name="Intermediate"
             price="Contact Us"
             description="For students ready to tackle more complex challenges."
-            href="/register"
+            href="/login"
             features={[
               'Advanced programming techniques',
               'Complex robot design projects',
@@ -166,7 +166,7 @@ export function Pricing() {
             name="Advanced"
             price="Contact Us"
             description="For experienced students pursuing robotics excellence."
-            href="/register"
+            href="/login"
             features={[
               'Advanced engineering principles',
               'Custom robot development',
