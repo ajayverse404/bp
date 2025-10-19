@@ -1,5 +1,6 @@
 import { getUser } from '@/lib/auth-helpers'
 import { WelcomeBanner } from '@/components/WelcomeBanner'
+import { SignupConfirmation } from '@/components/SignupConfirmation'
 
 export default async function Dashboard() {
   const user = await getUser()
@@ -21,11 +22,13 @@ export default async function Dashboard() {
               You are signed in as: <span className="font-medium">{user.email}</span>
             </p>
             <p className="mt-4 text-sm text-gray-500">
-              This is a protected page that only authenticated users can access.
+              This is a protected dedicated dashboard page for students/parents that only authenticated users can access.
             </p>
           </div>
         </div>
       </div>
+      <SignupConfirmation />
     </div>
+    
   )
 }
