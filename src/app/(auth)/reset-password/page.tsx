@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 
 import { Button } from '@/components/Button'
 import { TextField } from '@/components/Fields'
@@ -10,7 +10,7 @@ import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/SlimLayout'
 import { updatePassword } from '@/lib/auth-helpers-client'
 
-export default function ResetPassword() {
+function ResetPasswordForm() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -157,5 +157,27 @@ export default function ResetPassword() {
         </Link>
       </div>
     </SlimLayout>
+  )
+}
+
+export default function ResetPassword() {
+  return (
+    <Suspense fallback={
+      <SlimLayout>
+        <div className="flex">
+          <Link href="/" aria-label="Home">
+            <Logo className="h-10 w-auto" />
+          </Link>
+        </div>
+        <h2 className="mt-20 text-lg font-semibold text-gray-900">
+          Loading...
+        </h2>
+        <p className="mt-2 text-sm text-gray-700">
+          Please wait while we verify your reset link.
+        </p>
+      </SlimLayout>
+    }>
+      <ResetPasswordForm />
+    </Suspense>
   )
 }
