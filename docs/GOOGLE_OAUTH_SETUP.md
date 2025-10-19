@@ -71,9 +71,12 @@ Add these to your `.env.local` file:
 # Google OAuth (if needed for additional configuration)
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# Site URL for OAuth redirects (optional - defaults to window.location.origin)
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 ```
 
-**Note:** The main OAuth configuration is done in Supabase, but you might need these for additional features.
+**Note:** The main OAuth configuration is done in Supabase, but you might need these for additional features. The `NEXT_PUBLIC_SITE_URL` is particularly useful for production deployments where the OAuth redirect needs to use the correct domain.
 
 ## 🔧 Testing Your Setup
 

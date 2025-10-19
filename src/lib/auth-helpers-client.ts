@@ -50,10 +50,13 @@ export async function signIn(email: string, password: string): Promise<AuthResul
 export async function signInWithMagicLink(email: string): Promise<AuthResult> {
   const supabase = createClient()
   
+  // Use environment variable for production domain if available, otherwise use window.location.origin
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
+  
   const { data, error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+      emailRedirectTo: `${baseUrl}/auth/callback?next=/dashboard`,
     },
   })
 
@@ -70,10 +73,16 @@ export async function signInWithMagicLink(email: string): Promise<AuthResult> {
 export async function signInWithGoogle(): Promise<AuthResult> {
   const supabase = createClient()
   
+  // Use environment variable for production domain if available, otherwise use window.location.origin
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
+  const redirectTo = `${baseUrl}/auth/callback?next=/dashboard`
+  
+  console.log('Google OAuth redirect URL:', redirectTo)
+  
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+      redirectTo,
     },
   })
 
@@ -90,8 +99,11 @@ export async function signInWithGoogle(): Promise<AuthResult> {
 export async function resetPassword(email: string): Promise<AuthResult> {
   const supabase = createClient()
   
+  // Use environment variable for production domain if available, otherwise use window.location.origin
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
+  
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${window.location.origin}/reset-password`,
+    redirectTo: `${baseUrl}/reset-password`,
   })
 
   if (error) {

@@ -14,17 +14,38 @@ export async function GET(request: NextRequest) {
       
       if (!error) {
         // Successfully exchanged code for session
-        const forwardedHost = request.headers.get('x-forwarded-host') // original origin before load balancer
+        const forwardedHost = request.headers.get('x-forwarded-host')
+        const forwardedProto = request.headers.get('x-forwarded-proto')
         const isLocalEnv = process.env.NODE_ENV === 'development'
         
+        // Determine the correct redirect URL
+        let redirectUrl: string
+        
         if (isLocalEnv) {
-          // we can be sure that there is no load balancer in between, so no need to watch for X-Forwarded-Host
-          return NextResponse.redirect(`${origin}${next}`)
+          // Development environment
+          redirectUrl = `${origin}${next}`
         } else if (forwardedHost) {
-          return NextResponse.redirect(`https://${forwardedHost}${next}`)
+          // Production with load balancer (Vercel, etc.)
+          const protocol = forwardedProto || 'https'
+          redirectUrl = `${protocol}://${forwardedHost}${next}`
         } else {
-          return NextResponse.redirect(`${origin}${next}`)
+          // Production without load balancer - use origin but ensure it's HTTPS
+          const url = new URL(origin)
+          if (url.protocol === 'http:' && process.env.NODE_ENV === 'production') {
+            url.protocol = 'https:'
+          }
+          redirectUrl = `${url.toString().replace(/\/$/, '')}${next}`
         }
+        
+        console.log('Auth callback redirect:', { 
+          isLocalEnv, 
+          forwardedHost, 
+          forwardedProto, 
+          origin, 
+          redirectUrl 
+        })
+        
+        return NextResponse.redirect(redirectUrl)
       } else {
         console.error('Error exchanging code for session:', error)
         return NextResponse.redirect(`${origin}/login?error=Authentication failed`)
