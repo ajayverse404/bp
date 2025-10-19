@@ -2,7 +2,7 @@
 
 import { type Metadata } from 'next'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from '@/components/Button'
@@ -13,7 +13,7 @@ import { signIn, signInWithMagicLink, signInWithGoogle } from '@/lib/auth-helper
 
 type AuthMethod = 'password' | 'magic-link'
 
-export default function Login() {
+function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [authMethod, setAuthMethod] = useState<AuthMethod>('password')
@@ -257,5 +257,27 @@ export default function Login() {
         </Button>
       </div>
     </SlimLayout>
+  )
+}
+
+export default function Login() {
+  return (
+    <Suspense fallback={
+      <SlimLayout>
+        <div className="flex">
+          <Link href="/" aria-label="Home">
+            <Logo className="h-10 w-auto" />
+          </Link>
+        </div>
+        <h2 className="mt-20 text-lg font-semibold text-gray-900">
+          Loading...
+        </h2>
+        <p className="mt-2 text-sm text-gray-700">
+          Please wait while we load the sign-in page.
+        </p>
+      </SlimLayout>
+    }>
+      <LoginForm />
+    </Suspense>
   )
 }
