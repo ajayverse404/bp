@@ -7,8 +7,12 @@ import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
+import { getUser } from '@/lib/auth-helpers'
 
-export default function Home() {
+export default async function Home() {
+  const user = await getUser()
+  const isAuthenticated = !!user
+
   return (
     <>
       <Header />
@@ -16,7 +20,7 @@ export default function Home() {
         <Hero />
         <PrimaryFeatures />
         <SecondaryFeatures />
-        <FirstCohortPricing />
+        <FirstCohortPricing isAuthenticated={isAuthenticated} />
         {/* <Testimonials /> */}
         {/* <Pricing /> */}
         <Faqs />

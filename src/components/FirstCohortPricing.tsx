@@ -64,6 +64,7 @@ function PricingCard({
   description,
   features,
   featured = false,
+  isAuthenticated = false,
 }: {
   name: string
   originalPrice: string
@@ -71,6 +72,7 @@ function PricingCard({
   description: string
   features: Array<string>
   featured?: boolean
+  isAuthenticated?: boolean
 }) {
   return (
     <div
@@ -138,18 +140,18 @@ function PricingCard({
 
       {/* CTA Button */}
       <Button
-        href="/login"
+        href={isAuthenticated ? "/dashboard" : "/login"}
         variant="solid"
         color={featured ? "white" : "blue"}
         className="mt-8 w-full px-4 py-2 text-sm font-medium"
       >
-        Get started
+        {isAuthenticated ? "Go to Dashboard" : "Get started"}
       </Button>
     </div>
   )
 }
 
-export function FirstCohortPricing() {
+export function FirstCohortPricing({ isAuthenticated = false }: { isAuthenticated?: boolean }) {
   return (
     <section
       id="first-cohort-pricing"
@@ -181,6 +183,7 @@ export function FirstCohortPricing() {
               '3-day intensive course',
               'Parent support materials',
             ]}
+            isAuthenticated={isAuthenticated}
           />
           <PricingCard
             name="Next Cohort - Kit Included"
@@ -194,6 +197,7 @@ export function FirstCohortPricing() {
               'Mentorship and guidance',
             ]}
             featured
+            isAuthenticated={isAuthenticated}
           />
         </div>
 
