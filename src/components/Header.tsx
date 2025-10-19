@@ -13,7 +13,7 @@ export async function Header() {
   const isAuthenticated = !!user
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] bg-white/80 backdrop-blur-md py-10">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-white/80 backdrop-blur-md py-4">
       <Container>
         <nav className="relative z-[101] flex justify-between">
           <div className="flex items-center md:gap-x-12">
